@@ -43,7 +43,7 @@ export const software: Software[] = [
     license: "Free",
     released: "September 2026",
     icon: "/software/idmpro/icon.png",
-    downloadUrl: "https://github.com/Mudasir-Ahmad011/Idmpro-Setup",
+    downloadUrl: "https://github.com/Mudasir-Ahmad011/Idmpro-Setup/releases/tag/v1.0.0",
     features: [
       {
         title: "Up to 32 connections",
