@@ -40,6 +40,9 @@ export default function Footer() {
             <li>
               <Link href="/#about">About</Link>
             </li>
+            <li>
+              <Link href="/#faq">Common questions</Link>
+            </li>
           </ul>
         </div>
 

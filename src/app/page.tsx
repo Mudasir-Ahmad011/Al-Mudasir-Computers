@@ -2,11 +2,14 @@ import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import ServiceCard from "@/components/ServiceCard";
 import { products } from "@/data/products";
-import { services, site, steps, techStack } from "@/data/site";
+import JsonLd from "@/components/JsonLd";
+import { faqSchema } from "@/data/schema";
+import { faqs, services, site, steps, techStack, telHref } from "@/data/site";
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={faqSchema()} />
       <section className="hero wrap">
         <p className="eyebrow mono">Software agency · Web · Mobile · Desktop</p>
         <h1 className="hero-title">
@@ -129,6 +132,24 @@ export default function Home() {
         </p>
       </section>
 
+      <section id="faq" className="faq wrap">
+        <div className="section-head">
+          <h2>Common questions</h2>
+          <span className="mono muted">Straight answers</span>
+        </div>
+        <div className="faq-list">
+          {faqs.map((f) => (
+            <details key={f.question} className="faq-item">
+              <summary>
+                <h3>{f.question}</h3>
+                <span className="faq-mark" aria-hidden="true" />
+              </summary>
+              <p>{f.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
       <section className="cta wrap">
         <div className="cta-inner">
           <h2>Have something to build?</h2>
@@ -139,6 +160,15 @@ export default function Home() {
           <a href={`mailto:${site.email}`} className="btn btn-primary">
             {site.email}
           </a>
+          <p className="cta-phones">
+            or call{" "}
+            {site.phones.map((phone, i) => (
+              <span key={phone}>
+                {i > 0 && " · "}
+                <a href={`tel:${telHref(phone)}`}>{phone}</a>
+              </span>
+            ))}
+          </p>
         </div>
       </section>
     </>

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
+import { organizationSchema, websiteSchema } from "@/data/schema";
 import { site } from "@/data/site";
 import "./globals.css";
 
@@ -18,33 +20,58 @@ const mono = IBM_Plex_Mono({
   display: "swap",
 });
 
+// Written for a search result, not for us: the title leads with what we do
+// and where, because that is what someone scans in a list of ten results.
+const TITLE = `${site.name} — Software Agency in Pakistan | Web, App & Desktop Development`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} · ${site.tagline}`,
+    default: TITLE,
     template: `%s · ${site.name}`,
   },
   description: site.description,
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
+  category: "Software Development",
   keywords: [
-    "software agency",
-    "web development",
-    "app development",
-    "desktop software development",
-    "React",
-    "Next.js",
+    "software agency Pakistan",
+    "software house Pakistan",
+    "web development company",
+    "mobile app development",
+    "Windows desktop software development",
+    "billing and inventory software",
+    "FBR Digital Invoicing software",
+    "React Next.js development",
+    "Electron desktop app development",
     site.name,
   ],
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: site.url,
     siteName: site.name,
-    title: `${site.name} · ${site.tagline}`,
+    locale: "en_PK",
+    title: TITLE,
     description: site.description,
   },
   twitter: {
-    card: "summary",
-    title: `${site.name} · ${site.tagline}`,
+    card: "summary_large_image",
+    title: TITLE,
     description: site.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
@@ -70,6 +97,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <Header />
         <main>{children}</main>
         <Footer />

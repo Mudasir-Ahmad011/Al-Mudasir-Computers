@@ -763,6 +763,101 @@ a.card:hover .card-arrow {
   font-size: 0.95rem;
 }
 
+/* ---------- faq ---------- */
+
+.faq {
+  padding: 64px 24px;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 820px;
+}
+
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  overflow: hidden;
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.faq-item summary:hover h3 {
+  color: var(--accent);
+}
+
+/* A plus that becomes a minus when the answer is open. */
+.faq-mark {
+  position: relative;
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+.faq-mark::before,
+.faq-mark::after {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+  transform: translateY(-50%);
+  transition: transform 0.2s ease;
+}
+
+.faq-mark::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.faq-item[open] .faq-mark::after {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+.faq-item p {
+  padding: 0 22px 20px;
+  color: var(--ink-2);
+  font-size: 0.97rem;
+  max-width: 70ch;
+}
+
+.cta-phones {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.cta-phones a {
+  color: var(--ink-2);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.cta-phones a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
 /* ---------- about & cta ---------- */
 
 .about h2 {

@@ -3,6 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProduct, products } from "@/data/products";
+import JsonLd from "@/components/JsonLd";
+import {
+  breadcrumbSchema,
+  productSchema,
+  videoSchema,
+} from "@/data/schema";
 import { site } from "@/data/site";
 
 type Props = {
@@ -17,13 +23,38 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = getProduct(slug);
   if (!item) return {};
-  return { title: item.name, description: item.tagline };
+
+  const title = `${item.name} — ${item.tagline}`;
+  const url = `${site.url}/products/${item.slug}`;
+
+  return {
+    title,
+    // The full description, not the tagline: a search snippet has room for
+    // about 160 characters and the tagline wastes most of them.
+    description: item.description.slice(0, 300),
+    keywords: [item.name, item.category, ...item.stack, item.platform],
+    alternates: { canonical: `/products/${item.slug}` },
+    openGraph: {
+      type: "website",
+      url,
+      title,
+      description: item.description.slice(0, 300),
+      images: [{ url: item.icon, width: 256, height: 256, alt: `${item.name} icon` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: item.tagline,
+    },
+  };
 }
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
   const item = getProduct(slug);
   if (!item) notFound();
+
+  const video = videoSchema(item);
 
   const specs: [string, string][] = [
     ["Version", item.version],
@@ -36,6 +67,13 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <article className="detail wrap">
+      <JsonLd
+        data={[
+          productSchema(item),
+          breadcrumbSchema(item),
+          ...(video ? [video] : []),
+        ]}
+      />
       <nav className="crumbs mono" aria-label="Breadcrumb">
         <Link href="/">Home</Link>
         <span aria-hidden="true">/</span>

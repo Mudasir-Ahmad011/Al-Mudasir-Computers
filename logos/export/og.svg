@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#0A1628"/>
+  <circle cx="600" cy="90" r="340" fill="#0E2238"/>
+  <g id="mark" transform="translate(86,150) scale(0.3515625)">
+    <g transform="translate(0,43)">
+      <g stroke="#235C79" stroke-width="32" stroke-linecap="round">
+        <line x1="256" y1="256" x2="256" y2="84"/>
+        <line x1="256" y1="256" x2="404.96" y2="342"/>
+        <line x1="256" y1="256" x2="107.04" y2="342"/>
+      </g>
+      <g fill="#F8FAFC">
+        <circle cx="256" cy="84" r="44"/>
+        <circle cx="404.96" cy="342" r="44"/>
+        <circle cx="107.04" cy="342" r="44"/>
+      </g>
+      <circle cx="256" cy="256" r="64" fill="#00D4FF"/>
+    </g>
+  </g>
+  <g font-family="ui-sans-serif, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="276" y="258" font-size="76" letter-spacing="-2" fill="#F8FAFC">
+      <tspan font-weight="400">Techie</tspan><tspan font-weight="700"> SoftHub</tspan>
+    </text>
+    <text x="88" y="372" font-size="42" font-weight="600" fill="#00D4FF">Software agency · Web · Mobile · Desktop</text>
+    <text x="88" y="446" font-size="33" fill="#C3D2E3">Web apps, Android and iOS apps, and Windows desktop</text>
+    <text x="88" y="494" font-size="33" fill="#C3D2E3">software — built, shipped and maintained.</text>
+    <text x="88" y="570" font-size="29" font-family="ui-monospace, Consolas, monospace" fill="#7D93AD">techiesofthub.com</text>
+  </g>
+</svg>
