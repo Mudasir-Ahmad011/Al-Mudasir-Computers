@@ -52,7 +52,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${display.variable} ${mono.variable}`}>
+    // The script below sets data-theme on <html> before React hydrates, so the
+    // server markup and the client tree differ by that one attribute on
+    // purpose. suppressHydrationWarning covers this element only.
+    <html
+      lang="en"
+      className={`${display.variable} ${mono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         {/* Applies a saved theme before first paint, so a visitor who chose
             the day theme never sees the night one flash first. */}
