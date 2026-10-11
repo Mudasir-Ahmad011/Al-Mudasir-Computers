@@ -1,7 +1,15 @@
 /* Techie SoftHub — deep navy + electric cyan.
-   The palette lives in :root; everything else references it. */
+   The palette lives in :root; everything else references it.
+
+   Night is the default. Day applies when the visitor's system asks for a
+   light theme, and either theme can be forced with data-theme on <html>,
+   which the header toggle sets. The day block is written twice because a
+   media query and an attribute selector cannot share one rule — keep the
+   two copies in step. */
 
 :root {
+  color-scheme: dark;
+
   --navy: #0a1628;
   --navy-2: #0e1d33;
   --card: #111f36;
@@ -14,8 +22,14 @@
   --accent: #00d4ff;
   --accent-dim: #00a8cc;
   --accent-ink: #04141c;
+  --accent-hover: #4ae2ff;
+  --accent-soft: rgba(0, 212, 255, 0.1);
+  --accent-soft-2: rgba(0, 212, 255, 0.05);
+  --accent-border: rgba(0, 212, 255, 0.28);
   --glow: rgba(0, 212, 255, 0.16);
   --grid: rgba(125, 147, 173, 0.07);
+  --header-bg: rgba(10, 22, 40, 0.82);
+  --footer-bg: #081222;
 
   /* Consumed by the Logo component. */
   --logo-spoke: #235c79;
@@ -23,6 +37,65 @@
 
   --radius: 14px;
   --wrap: 1140px;
+}
+
+/* Day theme — the accent darkens to stay readable on white. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+
+    --navy: #f5f8fc;
+    --navy-2: #eaf1f8;
+    --card: #ffffff;
+    --card-2: #f4f9fd;
+    --ink: #0a1628;
+    --ink-2: #3b5068;
+    --muted: #64788f;
+    --line: #dde7f1;
+    --line-2: #c0d2e4;
+    --accent: #0a7a97;
+    --accent-dim: #0f93b4;
+    --accent-ink: #ffffff;
+    --accent-hover: #0c6880;
+    --accent-soft: rgba(10, 122, 151, 0.09);
+    --accent-soft-2: rgba(10, 122, 151, 0.05);
+    --accent-border: rgba(10, 122, 151, 0.26);
+    --glow: rgba(10, 122, 151, 0.12);
+    --grid: rgba(10, 22, 40, 0.05);
+    --header-bg: rgba(245, 248, 252, 0.84);
+    --footer-bg: #eef4fa;
+
+    --logo-spoke: #9db6cc;
+    --logo-node: #0a1628;
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --navy: #f5f8fc;
+  --navy-2: #eaf1f8;
+  --card: #ffffff;
+  --card-2: #f4f9fd;
+  --ink: #0a1628;
+  --ink-2: #3b5068;
+  --muted: #64788f;
+  --line: #dde7f1;
+  --line-2: #c0d2e4;
+  --accent: #0a7a97;
+  --accent-dim: #0f93b4;
+  --accent-ink: #ffffff;
+  --accent-hover: #0c6880;
+  --accent-soft: rgba(10, 122, 151, 0.09);
+  --accent-soft-2: rgba(10, 122, 151, 0.05);
+  --accent-border: rgba(10, 122, 151, 0.26);
+  --glow: rgba(10, 122, 151, 0.12);
+  --grid: rgba(10, 22, 40, 0.05);
+  --header-bg: rgba(245, 248, 252, 0.84);
+  --footer-bg: #eef4fa;
+
+  --logo-spoke: #9db6cc;
+  --logo-node: #0a1628;
 }
 
 * {
@@ -54,6 +127,27 @@ body {
 
 main {
   flex: 1;
+}
+
+/* Theme swaps shouldn't snap. */
+body,
+.site-header,
+.site-footer,
+.card,
+.stack-group,
+.feature,
+.ticket,
+.cta-inner {
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 a {
@@ -100,7 +194,7 @@ ol {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(10, 22, 40, 0.82);
+  background: var(--header-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
 }
@@ -160,7 +254,32 @@ ol {
 
 .nav-cta:hover {
   border-color: var(--accent);
-  background: rgba(0, 212, 255, 0.08);
+  background: var(--accent-soft);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
 }
 
 /* ---------- buttons ---------- */
@@ -192,7 +311,7 @@ ol {
 }
 
 .btn-primary:hover {
-  background: #4ae2ff;
+  background: var(--accent-hover);
   transform: translateY(-2px);
 }
 
@@ -203,7 +322,7 @@ ol {
 
 .btn-ghost:hover {
   border-color: var(--accent);
-  background: rgba(0, 212, 255, 0.07);
+  background: var(--accent-soft);
   transform: translateY(-2px);
 }
 
@@ -454,7 +573,7 @@ a.card:hover .card-arrow {
 
 .ext-link:hover {
   border-color: var(--accent);
-  background: rgba(0, 212, 255, 0.07);
+  background: var(--accent-soft);
 }
 
 .ext-link .ext-arrow {
@@ -481,8 +600,8 @@ a.card:hover .card-arrow {
   display: inline-block;
   padding: 4px 11px;
   border-radius: 999px;
-  background: rgba(0, 212, 255, 0.1);
-  border: 1px solid rgba(0, 212, 255, 0.28);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
   color: var(--accent);
   font-family: var(--font-mono), monospace;
   font-size: 0.72rem;
@@ -504,8 +623,8 @@ a.card:hover .card-arrow {
   width: 46px;
   height: 46px;
   border-radius: 12px;
-  background: rgba(0, 212, 255, 0.1);
-  border: 1px solid rgba(0, 212, 255, 0.24);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
   color: var(--accent);
 }
 
@@ -592,7 +711,7 @@ a.card:hover .card-arrow {
 .process-step {
   padding: 22px;
   border-left: 2px solid var(--line-2);
-  background: linear-gradient(90deg, rgba(0, 212, 255, 0.05), transparent 60%);
+  background: linear-gradient(90deg, var(--accent-soft-2), transparent 60%);
 }
 
 .process-num {
@@ -629,7 +748,7 @@ a.card:hover .card-arrow {
   padding: 56px 32px;
   text-align: center;
   background:
-    radial-gradient(600px 240px at 50% 0%, rgba(0, 212, 255, 0.14), transparent 70%),
+    radial-gradient(600px 240px at 50% 0%, var(--glow), transparent 70%),
     var(--card);
   border: 1px solid var(--line-2);
   border-radius: 22px;
@@ -649,7 +768,7 @@ a.card:hover .card-arrow {
 
 .site-footer {
   border-top: 1px solid var(--line);
-  background: #081222;
+  background: var(--footer-bg);
   padding: 56px 0 28px;
   scroll-margin-top: 84px;
 }
@@ -825,7 +944,7 @@ a.card:hover .card-arrow {
   margin-top: 40px;
   padding: 22px;
   border-left: 2px solid var(--accent);
-  background: rgba(0, 212, 255, 0.05);
+  background: var(--accent-soft-2);
   border-radius: 0 var(--radius) var(--radius) 0;
 }
 

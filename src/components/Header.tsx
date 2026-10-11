@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
+import ThemeToggle from "./ThemeToggle";
 import { site } from "@/data/site";
 
 export default function Header() {
@@ -20,6 +21,7 @@ export default function Header() {
           <Link href="/#contact" className="nav-cta">
             Contact
           </Link>
+          <ThemeToggle />
         </nav>
       </div>
     </header>
