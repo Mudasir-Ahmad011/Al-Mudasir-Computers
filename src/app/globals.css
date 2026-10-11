@@ -529,6 +529,38 @@ a.card:hover .card-arrow {
   text-decoration: underline;
 }
 
+/* Demo video on a product page. */
+.video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--navy-2);
+}
+
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.video-channel {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.video-channel:hover {
+  text-decoration: underline;
+}
+
 /* Published browser-extension listings in the product sidebar. */
 .ext {
   margin-top: 24px;

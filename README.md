@@ -24,9 +24,11 @@ Almost everything is data, not markup.
 
 1. Put its icon in `public/products/<slug>/icon.png` (square PNG, 256px or larger).
 2. Copy the IDM Pro entry in `src/data/products.ts`, change the `slug`, name,
-   text, `stack` and `downloadUrl`. Leave `downloadUrl` out for a product that
-   isn't downloadable yet — the download button disappears and only the
-   "Contact us" block remains.
+   text, `stack` and `downloadUrl`. Leave `downloadUrl` out for a product you
+   take enquiries on rather than ship — the download button disappears and
+   only the "Contact us" block remains, as it does for Hisaab.
+   Two optional extras: `video` (a YouTube id and title) embeds a demo above
+   the feature list, and `extensions` lists published browser add-ons.
 3. Save. It shows up under **Products** and gets a page at `/products/<slug>`.
 
 ## Structure

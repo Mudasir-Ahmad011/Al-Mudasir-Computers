@@ -50,6 +50,11 @@ export default function Footer() {
               <a href={`mailto:${site.email}`}>{site.email}</a>
             </li>
             <li>
+              <a href={site.youtube} target="_blank" rel="noopener noreferrer">
+                YouTube
+              </a>
+            </li>
+            <li>
               <a href={site.github} target="_blank" rel="noopener noreferrer">
                 GitHub
               </a>

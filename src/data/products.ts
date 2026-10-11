@@ -15,6 +15,13 @@ export type Extension = {
   version?: string;
 };
 
+/** A demo video embedded on the product page. */
+export type Video = {
+  /** The id from the YouTube watch URL, e.g. 4p6LUxyYVe8. */
+  youtubeId: string;
+  title: string;
+};
+
 export type Product = {
   /** Used in the URL: /products/<slug> */
   slug: string;
@@ -38,6 +45,8 @@ export type Product = {
   downloadLabel?: string;
   /** Browser extensions published alongside the product, if any. */
   extensions?: Extension[];
+  /** A demo video, shown above the feature list. */
+  video?: Video;
   features: Feature[];
   requirements: string[];
   installSteps: string[];
@@ -45,6 +54,79 @@ export type Product = {
 };
 
 export const products: Product[] = [
+  {
+    slug: "hisaab",
+    name: "Hisaab",
+    tagline: "Billing, inventory and accounting for Pakistani shops and distributors.",
+    description:
+      "Hisaab runs a shop's whole day: bills, stock, parties, payments and the books behind them. It needs no internet — the data sits in a file on your own computer — and several computers in one shop can work on the same books over the LAN. Sales tax, FBR Digital Invoicing, WhatsApp reminders and full double-entry accounting are all in it, each switched on only if you want it.",
+    kind: "Desktop",
+    category: "Billing & Accounting",
+    year: "2026",
+    stack: ["Electron", "Vue 3", "SQLite", "Node.js", "NSIS"],
+    version: "0.29.1",
+    platform: "Windows 10 / 11 (64-bit)",
+    size: "About 120 MB",
+    license: "14-day trial, then a key",
+    released: "October 2026",
+    icon: "/products/hisaab/icon.png",
+    video: {
+      youtubeId: "4p6LUxyYVe8",
+      title: "Hisaab demo — billing, inventory and accounting",
+    },
+    features: [
+      {
+        title: "Billing and counter sales",
+        body: "Sale and purchase bills with a fast lite-sale screen and a POS counter mode. Scan barcodes, print your own bill layouts, and send the bill on WhatsApp with the PDF attached.",
+      },
+      {
+        title: "Stock that matches the shelf",
+        body: "Items, batches and expiry, IMEI and serial numbers, godowns, FIFO costing, stock adjustments, manufacturing runs and low-stock alerts.",
+      },
+      {
+        title: "Parties and recovery",
+        body: "Party statements and balances, a net-balance recovery sheet, each party's own rates, and WhatsApp reminders sent from inside Hisaab.",
+      },
+      {
+        title: "Reports for every question",
+        body: "Sale, purchase, stock, tax and financial reports — item-wise, party-wise, town-wise, salesman-wise, bill-wise profit, trial balance, balance sheet and profit & loss.",
+      },
+      {
+        title: "Accounting when you want it",
+        body: "Switch on the accounting module for a full chart of accounts, journal entries and account statements. Leave it off and Hisaab stays a billing program.",
+      },
+      {
+        title: "FBR Digital Invoicing",
+        body: "Sends real-time electronic invoices to FBR through PRAL, and prints the FBR invoice number and QR code on the bill, as Chapter XIV of the Sales Tax Rules requires.",
+      },
+      {
+        title: "Many computers, one set of books",
+        body: "One computer holds the data and the others work from it over the LAN. Multi Firm keeps up to five brands or branches in one company without splitting the books.",
+      },
+      {
+        title: "Move over from your old software",
+        body: "Imports parties, items, categories, units, tax rates and balances from a Vyapar company file, so a shop does not type its masters again.",
+      },
+    ],
+    requirements: [
+      "Windows 10 or Windows 11, 64-bit",
+      "About 500 MB of free disk space",
+      "No internet needed for day-to-day work",
+      "A local network, if several computers share one set of books",
+      "For FBR Digital Invoicing: a PRAL registration and a whitelisted fixed internet address",
+    ],
+    installSteps: [
+      "Contact us and we send you the current setup file.",
+      "Run the setup, choose an install folder and click Install.",
+      "When the setup asks, answer Only this computer, Server or Client — that is how several computers share one set of books.",
+      "Start Hisaab and make your company. The first 14 days are a free trial.",
+      "To carry on, send us the Machine Code from Help → Activate Hisaab and we send back your licence key.",
+    ],
+    notes: [
+      "When the trial ends without a key, Hisaab becomes read-only: viewing, printing, exporting and backups keep working, but entries cannot be added or changed until a key is pasted in.",
+      "FBR Digital Invoicing needs the taxpayer to register Hisaab with PRAL in IRIS and to have the computer's internet address whitelisted. We help with that setup.",
+    ],
+  },
   {
     slug: "idm-pro",
     name: "IDM Pro",

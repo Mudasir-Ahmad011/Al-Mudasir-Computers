@@ -10,6 +10,7 @@ export const site = {
     "Techie SoftHub designs and builds web apps, mobile apps and desktop software. We take a product from the first sketch to a shipped, maintained release.",
   email: "info@techiesofthub.com",
   github: "https://github.com/Mudasir-Ahmad011",
+  youtube: "https://www.youtube.com/@TechieSoftHub",
 };
 
 export type Service = {

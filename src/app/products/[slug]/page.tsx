@@ -64,6 +64,32 @@ export default async function ProductPage({ params }: Props) {
         <div className="detail-main">
           <p className="detail-desc">{item.description}</p>
 
+          {item.video && (
+            <section className="video">
+              <h2>See it in action</h2>
+              <div className="video-frame">
+                {/* nocookie keeps YouTube from setting tracking cookies
+                    unless the visitor actually plays the video. */}
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${item.video.youtubeId}`}
+                  title={item.video.title}
+                  loading="lazy"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+              <a
+                href={site.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="video-channel"
+              >
+                More videos on our YouTube channel
+                <span aria-hidden="true"> ↗</span>
+              </a>
+            </section>
+          )}
+
           <h2>Built with</h2>
           <ul className="chips">
             {item.stack.map((t) => (
@@ -107,7 +133,11 @@ export default async function ProductPage({ params }: Props) {
 
         <aside className="ticket" aria-label="Product details">
           <div className="ticket-top">
-            <span className="mono muted">{item.license} download</span>
+            {/* "Free download" reads well for a product you can download;
+                for one you ask us about, the licence stands on its own. */}
+            <span className="mono muted">
+              {item.downloadUrl ? `${item.license} download` : item.license}
+            </span>
             <p className="ticket-name">
               {item.name} <span className="mono">v{item.version}</span>
             </p>
