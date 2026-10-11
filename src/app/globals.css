@@ -1,13 +1,79 @@
-/* Techie SoftHub — deep navy + electric cyan.
-   The palette lives in :root; everything else references it.
+/* Techie SoftHub — the palette lives in :root; everything else references it.
 
-   Night is the default. Day applies when the visitor's system asks for a
-   light theme, and either theme can be forced with data-theme on <html>,
-   which the header toggle sets. The day block is written twice because a
-   media query and an attribute selector cannot share one rule — keep the
-   two copies in step. */
+   Day is the base theme. Night applies when the visitor's system asks for
+   dark mode, and either theme can be forced with data-theme on <html>, which
+   the header toggle sets and remembers. The night block is written twice
+   because a media query and an attribute selector cannot share one rule —
+   keep the two copies in step. */
 
 :root {
+  color-scheme: light;
+
+  /* Named for the night palette they began as; in day they are the
+     equivalent surfaces, lightest first. */
+  --navy: #f5f8fc;
+  --navy-2: #eaf1f8;
+  --card: #ffffff;
+  --card-2: #f4f9fd;
+  --ink: #0a1628;
+  --ink-2: #3b5068;
+  --muted: #64788f;
+  --line: #dde7f1;
+  --line-2: #c0d2e4;
+  /* Darkened from the night cyan, which is unreadable on white. */
+  --accent: #0a7a97;
+  --accent-dim: #0f93b4;
+  --accent-ink: #ffffff;
+  --accent-hover: #0c6880;
+  --accent-soft: rgba(10, 122, 151, 0.09);
+  --accent-soft-2: rgba(10, 122, 151, 0.05);
+  --accent-border: rgba(10, 122, 151, 0.26);
+  --glow: rgba(10, 122, 151, 0.12);
+  --grid: rgba(10, 22, 40, 0.05);
+  --header-bg: rgba(245, 248, 252, 0.84);
+  --footer-bg: #eef4fa;
+
+  /* Consumed by the Logo component. */
+  --logo-spoke: #9db6cc;
+  --logo-node: #0a1628;
+
+  --radius: 14px;
+  --wrap: 1140px;
+}
+
+/* Night — deep navy and electric cyan, for a system set to dark mode. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --navy: #0a1628;
+    --navy-2: #0e1d33;
+    --card: #111f36;
+    --card-2: #152742;
+    --ink: #f8fafc;
+    --ink-2: #c3d2e3;
+    --muted: #7d93ad;
+    --line: #1e3252;
+    --line-2: #2a4568;
+    --accent: #00d4ff;
+    --accent-dim: #00a8cc;
+    --accent-ink: #04141c;
+    --accent-hover: #4ae2ff;
+    --accent-soft: rgba(0, 212, 255, 0.1);
+    --accent-soft-2: rgba(0, 212, 255, 0.05);
+    --accent-border: rgba(0, 212, 255, 0.28);
+    --glow: rgba(0, 212, 255, 0.16);
+    --grid: rgba(125, 147, 173, 0.07);
+    --header-bg: rgba(10, 22, 40, 0.82);
+    --footer-bg: #081222;
+
+    --logo-spoke: #235c79;
+    --logo-node: #f8fafc;
+  }
+}
+
+/* The same night palette, forced by the toggle. */
+:root[data-theme="dark"] {
   color-scheme: dark;
 
   --navy: #0a1628;
@@ -31,71 +97,8 @@
   --header-bg: rgba(10, 22, 40, 0.82);
   --footer-bg: #081222;
 
-  /* Consumed by the Logo component. */
   --logo-spoke: #235c79;
   --logo-node: #f8fafc;
-
-  --radius: 14px;
-  --wrap: 1140px;
-}
-
-/* Day theme — the accent darkens to stay readable on white. */
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
-    color-scheme: light;
-
-    --navy: #f5f8fc;
-    --navy-2: #eaf1f8;
-    --card: #ffffff;
-    --card-2: #f4f9fd;
-    --ink: #0a1628;
-    --ink-2: #3b5068;
-    --muted: #64788f;
-    --line: #dde7f1;
-    --line-2: #c0d2e4;
-    --accent: #0a7a97;
-    --accent-dim: #0f93b4;
-    --accent-ink: #ffffff;
-    --accent-hover: #0c6880;
-    --accent-soft: rgba(10, 122, 151, 0.09);
-    --accent-soft-2: rgba(10, 122, 151, 0.05);
-    --accent-border: rgba(10, 122, 151, 0.26);
-    --glow: rgba(10, 122, 151, 0.12);
-    --grid: rgba(10, 22, 40, 0.05);
-    --header-bg: rgba(245, 248, 252, 0.84);
-    --footer-bg: #eef4fa;
-
-    --logo-spoke: #9db6cc;
-    --logo-node: #0a1628;
-  }
-}
-
-:root[data-theme="light"] {
-  color-scheme: light;
-
-  --navy: #f5f8fc;
-  --navy-2: #eaf1f8;
-  --card: #ffffff;
-  --card-2: #f4f9fd;
-  --ink: #0a1628;
-  --ink-2: #3b5068;
-  --muted: #64788f;
-  --line: #dde7f1;
-  --line-2: #c0d2e4;
-  --accent: #0a7a97;
-  --accent-dim: #0f93b4;
-  --accent-ink: #ffffff;
-  --accent-hover: #0c6880;
-  --accent-soft: rgba(10, 122, 151, 0.09);
-  --accent-soft-2: rgba(10, 122, 151, 0.05);
-  --accent-border: rgba(10, 122, 151, 0.26);
-  --glow: rgba(10, 122, 151, 0.12);
-  --grid: rgba(10, 22, 40, 0.05);
-  --header-bg: rgba(245, 248, 252, 0.84);
-  --footer-bg: #eef4fa;
-
-  --logo-spoke: #9db6cc;
-  --logo-node: #0a1628;
 }
 
 * {

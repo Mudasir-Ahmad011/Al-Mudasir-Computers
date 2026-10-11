@@ -6,29 +6,31 @@ type Theme = "light" | "dark";
 
 /**
  * Switches between the day and night themes by setting data-theme on <html>,
- * and remembers the choice. With nothing stored, the system preference wins —
- * that is the CSS default, so no attribute is set at all.
+ * and remembers the choice. Day is the base theme; with nothing stored, a
+ * system set to dark mode still gets night, which is the CSS default, so no
+ * attribute is set at all.
  */
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<Theme | null>(null);
 
   useEffect(() => {
+    // The inline script in the layout has already applied any stored choice.
     const stored = document.documentElement.dataset.theme as Theme | undefined;
     if (stored === "light" || stored === "dark") {
       setTheme(stored);
       return;
     }
-    const prefersLight = window.matchMedia("(prefers-color-scheme: light)");
-    setTheme(prefersLight.matches ? "light" : "dark");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+    setTheme(prefersDark.matches ? "dark" : "light");
 
     // Keep following the system while the visitor has made no choice.
     const onChange = (e: MediaQueryListEvent) => {
       if (!document.documentElement.dataset.theme) {
-        setTheme(e.matches ? "light" : "dark");
+        setTheme(e.matches ? "dark" : "light");
       }
     };
-    prefersLight.addEventListener("change", onChange);
-    return () => prefersLight.removeEventListener("change", onChange);
+    prefersDark.addEventListener("change", onChange);
+    return () => prefersDark.removeEventListener("change", onChange);
   }, []);
 
   function toggle() {
