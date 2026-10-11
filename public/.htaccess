@@ -1,0 +1,69 @@
+# Techie SoftHub — Apache / LiteSpeed configuration for Hostinger.
+#
+# This file is copied into out/ by the build and must sit next to index.html
+# in public_html. Without it the old URLs 404 and every page address needs a
+# ".html" on the end.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # --- One canonical address -------------------------------------------
+  # Force https and the bare domain, so a page is never reachable at two
+  # addresses. Search engines split a page's ranking between duplicates.
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^(.*)$ https://techiesofthub.com/$1 [R=301,L]
+
+  RewriteCond %{HTTP_HOST} ^www\.techiesofthub\.com$ [NC]
+  RewriteRule ^(.*)$ https://techiesofthub.com/$1 [R=301,L]
+
+  # --- Old URLs --------------------------------------------------------
+  # The shop's /software URLs were public; /work existed briefly during the
+  # rebrand. 301 so search engines carry the ranking over to /products.
+  # The targets end in a slash because that is the address the pages are
+  # served at, so these never land on a second redirect.
+  RewriteRule ^software/([^/]+)/?$ /products/$1/ [R=301,L]
+  RewriteRule ^work/([^/]+)/?$ /products/$1/ [R=301,L]
+  RewriteRule ^software/?$ /#products [R=301,L]
+  RewriteRule ^work/?$ /#products [R=301,L]
+
+  # Every page is exported as <path>/index.html, which Apache serves on its
+  # own, so no rewriting of page addresses is needed here.
+</IfModule>
+
+ErrorDocument 404 /404.html
+
+# --- Compression --------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml image/svg+xml
+</IfModule>
+
+# --- Caching ------------------------------------------------------------
+# Next puts a hash in the name of every build asset, so those can be cached
+# for a year. HTML must not be, or visitors keep seeing the old site after
+# you upload a new zip.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|txt|xml)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Make sure the SEO files are served as text, not downloaded.
+<IfModule mod_mime.c>
+  AddType text/plain .txt
+  AddType application/xml .xml
+</IfModule>

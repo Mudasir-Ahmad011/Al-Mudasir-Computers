@@ -19,6 +19,17 @@ export const site = {
   founded: "2026",
 };
 
+/**
+ * The address a page is actually served at, with the trailing slash that
+ * `trailingSlash: true` in next.config.ts produces. Use this everywhere a
+ * URL is written by hand — the sitemap and the schema — so crawlers are
+ * never pointed at an address that redirects.
+ */
+export function canonicalUrl(path = "/"): string {
+  const clean = path.replace(/^\/+|\/+$/g, "");
+  return clean ? `${site.url}/${clean}/` : `${site.url}/`;
+}
+
 /** `+92 333 6205055` -> `+923336205055`, for tel: links and schema. */
 export function telHref(phone: string): string {
   return phone.replace(/[^\d+]/g, "");

@@ -8,9 +8,39 @@ Next.js (App Router). Contact: info@techiesofthub.com
 ```bash
 npm install
 npm run dev      # http://localhost:3000
-npm run build    # production build
-npm start        # serve the production build
+npm run build    # writes the whole static site to out/
 ```
+
+There is no `npm start`: the site is exported as static files, so nothing
+runs on the server.
+
+## Deploy to Hostinger
+
+```bash
+npm run deploy   # builds, then packs out/ into techiesofthub.zip
+```
+
+Upload `techiesofthub.zip` in hPanel → File Manager, into `public_html`, and
+extract it there. The contents of `out/` must sit **directly** in
+`public_html` — `index.html` at the top, not inside a folder.
+
+**Check `.htaccess` survived the upload.** It carries the redirects from the
+old `/software` URLs, forces https and the bare domain, and sets caching.
+File Manager hides dotfiles by default — turn on "show hidden files" and
+confirm `.htaccess` is next to `index.html`. If it is missing, upload
+`public/.htaccess` by hand.
+
+After a deploy, check:
+
+- `https://techiesofthub.com/` loads
+- `https://techiesofthub.com/products/hisaab/` loads (trailing slash)
+- `https://techiesofthub.com/software/idm-pro` redirects to `/products/idm-pro/`
+- `https://techiesofthub.com/sitemap.xml`, `/robots.txt` and `/llms.txt` are
+  served as text rather than downloading
+
+Page addresses end in a slash (`/products/hisaab/`). That is deliberate:
+`trailingSlash` in `next.config.ts` makes the export write each page as
+`<path>/index.html`, which plain Apache serves without any rewriting.
 
 ## Editing the content
 

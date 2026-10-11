@@ -4,10 +4,10 @@
 // cannot drift apart.
 
 import type { Product } from "./products";
-import { faqs, services, site, telHref } from "./site";
+import { canonicalUrl, faqs, services, site, telHref } from "./site";
 
-const ORG_ID = `${site.url}/#organization`;
-const SITE_ID = `${site.url}/#website`;
+const ORG_ID = `${canonicalUrl()}#organization`;
+const SITE_ID = `${canonicalUrl()}#website`;
 
 /** The agency itself. Referenced by everything else through @id. */
 export function organizationSchema() {
@@ -17,7 +17,7 @@ export function organizationSchema() {
     "@id": ORG_ID,
     name: site.name,
     alternateName: "TechieSoftHub",
-    url: site.url,
+    url: canonicalUrl(),
     logo: `${site.url}/logo-mark.png`,
     image: `${site.url}/opengraph-image.png`,
     description: site.description,
@@ -76,7 +76,7 @@ export function websiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": SITE_ID,
-    url: site.url,
+    url: canonicalUrl(),
     name: site.name,
     description: site.description,
     publisher: { "@id": ORG_ID },
@@ -88,7 +88,7 @@ export function faqSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "@id": `${site.url}/#faq`,
+    "@id": `${canonicalUrl()}#faq`,
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.question,
@@ -99,7 +99,7 @@ export function faqSchema() {
 
 /** One product, as a SoftwareApplication. */
 export function productSchema(item: Product) {
-  const url = `${site.url}/products/${item.slug}`;
+  const url = canonicalUrl(`/products/${item.slug}`);
 
   return {
     "@context": "https://schema.org",
@@ -156,18 +156,18 @@ export function breadcrumbSchema(item: Product) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+      { "@type": "ListItem", position: 1, name: "Home", item: canonicalUrl() },
       {
         "@type": "ListItem",
         position: 2,
         name: "Products",
-        item: `${site.url}/#products`,
+        item: `${canonicalUrl()}#products`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: item.name,
-        item: `${site.url}/products/${item.slug}`,
+        item: canonicalUrl(`/products/${item.slug}`),
       },
     ],
   };

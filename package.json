@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "zip": "powershell -NoProfile -Command \"Compress-Archive -Path 'out/*' -DestinationPath 'techiesofthub.zip' -Force\"",
+    "deploy": "npm run build && npm run zip"
   },
   "dependencies": {
     "next": "^16.3.5",
