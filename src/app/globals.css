@@ -407,6 +407,61 @@ a.card:hover .card-arrow {
   text-decoration: underline;
 }
 
+/* Published browser-extension listings in the product sidebar. */
+.ext {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--line-2);
+}
+
+.ext h3 {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  margin-bottom: 8px;
+}
+
+.ext-note {
+  color: var(--muted);
+  font-size: 0.86rem;
+  margin-bottom: 12px;
+}
+
+.ext-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ext-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  background: var(--navy-2);
+  text-decoration: none;
+  font-size: 0.93rem;
+  font-weight: 600;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.ext-link:hover {
+  border-color: var(--accent);
+  background: rgba(0, 212, 255, 0.07);
+}
+
+.ext-link .ext-arrow {
+  margin-left: auto;
+  color: var(--accent);
+}
+
 /* "Questions about X?" block at the foot of a product sidebar. */
 .ticket-contact {
   margin-top: 24px;

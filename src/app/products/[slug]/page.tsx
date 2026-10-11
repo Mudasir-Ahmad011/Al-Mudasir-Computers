@@ -139,6 +139,36 @@ export default async function ProductPage({ params }: Props) {
             </>
           )}
 
+          {item.extensions && item.extensions.length > 0 && (
+            <div className="ext">
+              <h3 className="mono">Browser extension</h3>
+              <p className="ext-note">
+                Published and free. Install it to catch downloads straight from
+                your browser.
+              </p>
+              <ul className="ext-list">
+                {item.extensions.map((ext) => (
+                  <li key={ext.url}>
+                    <a
+                      href={ext.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ext-link"
+                    >
+                      <span>{ext.store}</span>
+                      {ext.version && (
+                        <span className="mono muted">v{ext.version}</span>
+                      )}
+                      <span className="ext-arrow" aria-hidden="true">
+                        ↗
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           <dl className="specs">
             {specs.map(([k, v]) => (
               <div key={k} className="spec-row">

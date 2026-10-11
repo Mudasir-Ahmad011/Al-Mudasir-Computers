@@ -8,6 +8,13 @@ export type Feature = {
   body: string;
 };
 
+/** A published browser-extension listing that goes with a product. */
+export type Extension = {
+  store: string;
+  url: string;
+  version?: string;
+};
+
 export type Product = {
   /** Used in the URL: /products/<slug> */
   slug: string;
@@ -29,6 +36,8 @@ export type Product = {
   /** Where the primary button sends the visitor. Omit for private client work. */
   downloadUrl?: string;
   downloadLabel?: string;
+  /** Browser extensions published alongside the product, if any. */
+  extensions?: Extension[];
   features: Feature[];
   requirements: string[];
   installSteps: string[];
@@ -54,6 +63,18 @@ export const products: Product[] = [
     icon: "/products/idmpro/icon.png",
     downloadUrl: "https://github.com/Mudasir-Ahmad011/Idmpro-Setup/releases/tag/v1.0.0",
     downloadLabel: "Download",
+    extensions: [
+      {
+        store: "Chrome Web Store",
+        url: "https://chromewebstore.google.com/detail/idm-pro/dnfoelinnbebkekgohdgmbjemncfhfac",
+        version: "1.0.1",
+      },
+      {
+        store: "Firefox Add-ons",
+        url: "https://addons.mozilla.org/en-US/firefox/addon/idm-pro/",
+        version: "1.0.2",
+      },
+    ],
     features: [
       {
         title: "Up to 32 connections",
@@ -65,7 +86,7 @@ export const products: Product[] = [
       },
       {
         title: "Browser capture",
-        body: "The extension hands every download from Chrome, Edge, Brave, Vivaldi, Opera or Firefox to IDM Pro, with cookies and referer, so protected links keep working.",
+        body: "The extension is published on the Chrome Web Store and Firefox Add-ons. It hands every download from Chrome, Edge, Brave, Vivaldi, Opera or Firefox to IDM Pro, with cookies and referer, so protected links keep working.",
       },
       {
         title: "Video downloads",
@@ -90,7 +111,7 @@ export const products: Product[] = [
       "Click Download. It opens the IDM Pro page on GitHub.",
       "Download the IDM Pro setup file (.exe) from the repository.",
       "Run the setup, choose an install folder and click Install.",
-      "Enable the IDM Pro extension in your browser when asked. You only do this once.",
+      "Add the IDM Pro extension from the Chrome Web Store or Firefox Add-ons. You only do this once.",
     ],
     notes: [
       "The installer is not code-signed yet, so Windows SmartScreen may show \"Windows protected your PC\". Click More info, then Run anyway.",
