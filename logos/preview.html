@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Techie SoftHub — Logo Concepts</title>
+<style>
+  :root { --navy:#0A1628; --cyan:#00D4FF; --paper:#F8FAFC; --line:#1E2D44; }
+  * { box-sizing: border-box; }
+  body {
+    margin:0; padding:48px 24px; background:var(--paper); color:var(--navy);
+    font:16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  .wrap { max-width:1100px; margin:0 auto; }
+  h1 { font-size:28px; margin:0 0 6px; letter-spacing:-0.02em; }
+  .sub { color:#5A6B82; margin:0 0 40px; font-size:14px; }
+  .grid { display:grid; gap:28px; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); }
+  .card { border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; background:#fff; }
+  .art { padding:28px; display:flex; justify-content:center; background:#fff; }
+  .art img { width:160px; height:160px; }
+  .meta { padding:14px 18px; border-top:1px solid #E2E8F0; }
+  .name { font-weight:600; font-size:15px; }
+  .file { font:12px/1.5 ui-monospace, "SF Mono", Consolas, monospace; color:#5A6B82; }
+  .sizes { display:flex; align-items:flex-end; gap:14px; padding:14px 18px; border-top:1px solid #E2E8F0; background:#FBFCFE; }
+  .sizes img { display:block; image-rendering:auto; }
+  .sizes span { font:11px ui-monospace, Consolas, monospace; color:#8494A8; }
+  .sizes div { display:flex; flex-direction:column; align-items:center; gap:6px; }
+  h2 { font-size:18px; margin:56px 0 14px; }
+  .lockups { display:grid; gap:20px; grid-template-columns:1fr; }
+  .lock { border:1px solid #E2E8F0; border-radius:16px; padding:28px; background:#fff; }
+  .lock.dark { background:var(--navy); border-color:var(--line); }
+  .lock img { width:100%; max-width:460px; height:auto; display:block; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Techie SoftHub — logo concepts</h1>
+  <p class="sub">Four directions. Each row shows the mark at full size, then rendered at 64 / 32 / 16&nbsp;px to check favicon legibility.</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="art"><img src="concepts/01-hub-node.svg" alt="Hub Node concept"></div>
+      <div class="meta"><div class="name">1 · Hub Node</div><div class="file">01-hub-node.svg</div></div>
+      <div class="sizes">
+        <div><img src="concepts/01-hub-node.svg" width="64" height="64" alt=""><span>64</span></div>
+        <div><img src="concepts/01-hub-node.svg" width="32" height="32" alt=""><span>32</span></div>
+        <div><img src="concepts/01-hub-node.svg" width="16" height="16" alt=""><span>16</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="art"><img src="concepts/02-hex-core.svg" alt="Hex Core concept"></div>
+      <div class="meta"><div class="name">2 · Hex Core</div><div class="file">02-hex-core.svg</div></div>
+      <div class="sizes">
+        <div><img src="concepts/02-hex-core.svg" width="64" height="64" alt=""><span>64</span></div>
+        <div><img src="concepts/02-hex-core.svg" width="32" height="32" alt=""><span>32</span></div>
+        <div><img src="concepts/02-hex-core.svg" width="16" height="16" alt=""><span>16</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="art"><img src="concepts/03-bracket-core.svg" alt="Bracket Core concept"></div>
+      <div class="meta"><div class="name">3 · Bracket Core</div><div class="file">03-bracket-core.svg</div></div>
+      <div class="sizes">
+        <div><img src="concepts/03-bracket-core.svg" width="64" height="64" alt=""><span>64</span></div>
+        <div><img src="concepts/03-bracket-core.svg" width="32" height="32" alt=""><span>32</span></div>
+        <div><img src="concepts/03-bracket-core.svg" width="16" height="16" alt=""><span>16</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="art"><img src="concepts/04-soft-s.svg" alt="Soft S concept"></div>
+      <div class="meta"><div class="name">4 · Soft S</div><div class="file">04-soft-s.svg</div></div>
+      <div class="sizes">
+        <div><img src="concepts/04-soft-s.svg" width="64" height="64" alt=""><span>64</span></div>
+        <div><img src="concepts/04-soft-s.svg" width="32" height="32" alt=""><span>32</span></div>
+        <div><img src="concepts/04-soft-s.svg" width="16" height="16" alt=""><span>16</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Chosen direction — lockup (concept 1)</h2>
+  <div class="lockups">
+    <div class="lock"><img src="export/logo-lockup.svg" alt="Techie SoftHub lockup on light"></div>
+    <div class="lock dark"><img src="export/logo-lockup-dark.svg" alt="Techie SoftHub lockup on dark"></div>
+  </div>
+</div>
+</body>
+</html>

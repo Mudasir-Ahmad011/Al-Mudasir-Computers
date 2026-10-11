@@ -1,6 +1,6 @@
-// Every product in the shop lives in this one list.
-// To add new software: copy the IDM Pro entry, change the fields, and put the
-// icon in public/software/<slug>/icon.png. The shop page and the detail page
+// Every product in the catalogue lives in this one list.
+// To add a product: copy the IDM Pro entry, change the fields, and put the
+// icon in public/products/<slug>/icon.png. The home page and the detail page
 // pick it up automatically.
 
 export type Feature = {
@@ -8,42 +8,52 @@ export type Feature = {
   body: string;
 };
 
-export type Software = {
-  /** Used in the URL: /software/<slug> */
+export type Product = {
+  /** Used in the URL: /products/<slug> */
   slug: string;
   name: string;
   tagline: string;
   description: string;
+  /** Which service this product belongs to: Web, Mobile or Desktop. */
+  kind: "Web" | "Mobile" | "Desktop";
   category: string;
+  year: string;
+  /** Technologies used, shown as chips on the product page. */
+  stack: string[];
   version: string;
   platform: string;
   size: string;
   license: string;
   released: string;
   icon: string;
-  /** Where the Download button sends the visitor. */
-  downloadUrl: string;
+  /** Where the primary button sends the visitor. Omit for private client work. */
+  downloadUrl?: string;
+  downloadLabel?: string;
   features: Feature[];
   requirements: string[];
   installSteps: string[];
   notes?: string[];
 };
 
-export const software: Software[] = [
+export const products: Product[] = [
   {
     slug: "idm-pro",
     name: "IDM Pro",
     tagline: "A multi-connection download manager with browser integration.",
     description:
       "IDM Pro splits every file into up to 32 parallel connections, resumes from the exact byte it stopped at after a pause, crash or reboot, and catches downloads straight from your browser. It also saves videos from YouTube and around 1,800 other sites, in the quality you pick.",
+    kind: "Desktop",
     category: "Download Manager",
+    year: "2026",
+    stack: ["Python", "Qt", "SQLite", "Browser extension", "Inno Setup"],
     version: "1.0.0",
     platform: "Windows 10 / 11 (64-bit)",
     size: "139 MB",
     license: "Free",
     released: "September 2026",
-    icon: "/software/idmpro/icon.png",
+    icon: "/products/idmpro/icon.png",
     downloadUrl: "https://github.com/Mudasir-Ahmad011/Idmpro-Setup/releases/tag/v1.0.0",
+    downloadLabel: "Download",
     features: [
       {
         title: "Up to 32 connections",
@@ -89,6 +99,6 @@ export const software: Software[] = [
   },
 ];
 
-export function getSoftware(slug: string): Software | undefined {
-  return software.find((s) => s.slug === slug);
+export function getProduct(slug: string): Product | undefined {
+  return products.find((p) => p.slug === slug);
 }

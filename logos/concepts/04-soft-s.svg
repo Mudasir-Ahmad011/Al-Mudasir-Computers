@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Techie SoftHub S-curve mark">
+  <title>Soft S</title>
+  <g id="tile">
+    <rect width="512" height="512" rx="112" fill="#0A1628"/>
+  </g>
+  <g id="curve">
+    <path d="M336 168 C336 112 176 112 176 192 C176 256 336 256 336 320 C336 400 176 400 176 344"
+          fill="none" stroke="#00D4FF" stroke-width="36" stroke-linecap="round"/>
+  </g>
+  <g id="terminals" fill="#F8FAFC">
+    <circle cx="336" cy="168" r="24"/>
+    <circle cx="176" cy="344" r="24"/>
+  </g>
+</svg>

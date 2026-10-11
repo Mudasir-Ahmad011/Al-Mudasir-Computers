@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Techie SoftHub bracket mark">
+  <title>Bracket Core</title>
+  <g id="tile">
+    <rect width="512" height="512" rx="112" fill="#0A1628"/>
+  </g>
+  <g id="brackets" fill="none" stroke="#F8FAFC" stroke-width="34" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="180,164 108,256 180,348"/>
+    <polyline points="332,164 404,256 332,348"/>
+  </g>
+  <g id="core">
+    <polygon points="256,204 308,256 256,308 204,256" fill="#00D4FF"/>
+  </g>
+</svg>

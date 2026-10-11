@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Techie SoftHub hexagon core mark">
+  <title>Hex Core</title>
+  <g id="tile">
+    <rect width="512" height="512" rx="112" fill="#0A1628"/>
+  </g>
+  <g id="hex">
+    <polygon points="426,256 341,403.2 171,403.2 86,256 171,108.8 341,108.8"
+             fill="none" stroke="#00D4FF" stroke-width="34" stroke-linejoin="round"/>
+  </g>
+  <g id="core">
+    <polygon points="326,256 291,316.6 221,316.6 186,256 221,195.4 291,195.4" fill="#F8FAFC"/>
+  </g>
+</svg>

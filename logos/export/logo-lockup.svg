@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 320" width="1024" height="320" role="img" aria-label="Techie SoftHub">
+  <title>Techie SoftHub — light lockup</title>
+  <g id="mark" transform="translate(32,40) scale(0.46875)">
+    <g transform="translate(0,43)">
+      <g stroke="#B8CBDC" stroke-width="32" stroke-linecap="round">
+        <line x1="256" y1="256" x2="256" y2="84"/>
+        <line x1="256" y1="256" x2="404.96" y2="342"/>
+        <line x1="256" y1="256" x2="107.04" y2="342"/>
+      </g>
+      <g fill="#0A1628">
+        <circle cx="256" cy="84" r="44"/>
+        <circle cx="404.96" cy="342" r="44"/>
+        <circle cx="107.04" cy="342" r="44"/>
+      </g>
+      <circle cx="256" cy="256" r="64" fill="#00D4FF"/>
+    </g>
+  </g>
+  <g id="wordmark" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="300" y="172" font-size="88" letter-spacing="-2" fill="#0A1628">
+      <tspan font-weight="400">Techie</tspan><tspan font-weight="700"> SoftHub</tspan>
+    </text>
+    <text x="304" y="224" font-size="26" letter-spacing="7" font-weight="600" fill="#4A6075">SOFTWARE AGENCY</text>
+  </g>
+</svg>

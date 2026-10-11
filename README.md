@@ -1,6 +1,7 @@
-# Al Mudasir Computers
+# Techie SoftHub
 
-The shop website, built with Next.js (App Router).
+The agency website for [techiesofthub.com](https://techiesofthub.com), built with
+Next.js (App Router). Contact: info@techiesofthub.com
 
 ## Run it
 
@@ -11,21 +12,44 @@ npm run build    # production build
 npm start        # serve the production build
 ```
 
-## Adding a new software
+## Editing the content
 
-1. Put its icon in `public/software/<slug>/icon.png` (square PNG, 256px or larger).
-2. Open `src/data/software.ts` and copy the IDM Pro entry into the `software`
-   list. Change the `slug`, name, text, and `downloadUrl` (the GitHub repo or
-   release link the Download button opens).
-3. Save. The new software shows up in the catalogue on the home page and gets
-   its own page at `/software/<slug>`.
+Almost everything is data, not markup.
+
+- **Agency details, services, tech stack, process** — `src/data/site.ts`.
+  Change the email, add a service, or add a technology to a stack group.
+- **Products** — `src/data/products.ts`.
+
+### Adding a product
+
+1. Put its icon in `public/products/<slug>/icon.png` (square PNG, 256px or larger).
+2. Copy the IDM Pro entry in `src/data/products.ts`, change the `slug`, name,
+   text, `stack` and `downloadUrl`. Leave `downloadUrl` out for a product that
+   isn't downloadable yet — the download button disappears and only the
+   "Contact us" block remains.
+3. Save. It shows up under **Products** and gets a page at `/products/<slug>`.
 
 ## Structure
 
 | Path | What it is |
 |---|---|
-| `src/data/software.ts` | Every product in the shop |
-| `src/app/page.tsx` | Home page / catalogue |
-| `src/app/software/[slug]/page.tsx` | Software detail page with the Download button |
-| `src/components/` | Header, footer, catalogue card |
-| `src/app/globals.css` | All styling (light and dark mode) |
+| `src/data/site.ts` | Brand, contact, services, tech stack, process |
+| `src/data/products.ts` | Products shown in the catalogue |
+| `src/app/page.tsx` | Home page (hero, services, stack, products, process, about, CTA) |
+| `src/app/products/[slug]/page.tsx` | Product detail page |
+| `src/components/` | Header, footer, logo, service and product cards |
+| `src/app/globals.css` | All styling |
+| `src/app/icon.svg` | Favicon |
+
+## Logo
+
+Design sources live in `logos/`:
+
+- `logos/concepts/` — the four explored directions
+- `logos/preview.html` — open in a browser to compare them, including a
+  16/32/64px favicon legibility check
+- `logos/export/` — the chosen mark as SVG (mark, icon, light and dark lockups)
+- `logos/export/png/` — PNG icons from 16px to 2048px
+
+To swap in a different concept, copy it over `logos/export/logo-icon.svg`,
+re-run `node logos/export-png.mjs`, and update `src/components/Logo.tsx`.

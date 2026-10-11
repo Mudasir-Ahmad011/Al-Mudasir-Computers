@@ -1,31 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Software } from "@/data/software";
+import type { Product } from "@/data/products";
 
 type Props = {
-  item: Software;
+  item: Product;
   index: number;
 };
 
-export default function SoftwareCard({ item, index }: Props) {
-  const number = String(index + 1).padStart(3, "0");
-
+export default function ProductCard({ item, index }: Props) {
   return (
     <Link
-      href={`/software/${item.slug}`}
-      className="card"
+      href={`/products/${item.slug}`}
+      className="card product-card"
       style={{ animationDelay: `${120 + index * 80}ms` }}
     >
       <div className="card-top">
-        <span className="mono muted">No. {number}</span>
-        <span className="tag">{item.category}</span>
+        <span className="tag">{item.kind}</span>
+        <span className="mono muted">{item.year}</span>
       </div>
       <div className="card-body">
         <Image
           src={item.icon}
           alt=""
-          width={72}
-          height={72}
+          width={64}
+          height={64}
           className="card-icon"
         />
         <div>
@@ -33,10 +31,15 @@ export default function SoftwareCard({ item, index }: Props) {
           <p className="card-tagline">{item.tagline}</p>
         </div>
       </div>
+      <div className="chips">
+        {item.stack.slice(0, 4).map((t) => (
+          <span key={t} className="chip mono">
+            {t}
+          </span>
+        ))}
+      </div>
       <div className="card-foot">
-        <span className="mono">
-          v{item.version} · {item.size} · {item.license}
-        </span>
+        <span className="mono">{item.category}</span>
         <span className="card-arrow" aria-hidden="true">
           →
         </span>
