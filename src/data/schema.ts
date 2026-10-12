@@ -146,7 +146,7 @@ export function videoSchema(item: Product) {
     thumbnailUrl: `https://i.ytimg.com/vi/${item.video.youtubeId}/maxresdefault.jpg`,
     embedUrl: `https://www.youtube-nocookie.com/embed/${item.video.youtubeId}`,
     contentUrl: `https://www.youtube.com/watch?v=${item.video.youtubeId}`,
-    uploadDate: "2026-10-01",
+    uploadDate: item.video.uploadDate,
     publisher: { "@id": ORG_ID },
   };
 }

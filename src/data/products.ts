@@ -17,9 +17,15 @@ export type Extension = {
 
 /** A demo video embedded on the product page. */
 export type Video = {
-  /** The id from the YouTube watch URL, e.g. 4p6LUxyYVe8. */
+  /** The id from the YouTube watch URL, e.g. zZCYSYifzLE. */
   youtubeId: string;
   title: string;
+  /**
+   * The date the video went up on YouTube, as YYYY-MM-DD. It goes into the
+   * VideoObject schema, which Google needs for a video rich result, so keep
+   * it matching the date shown on the YouTube page.
+   */
+  uploadDate: string;
 };
 
 export type Product = {
@@ -71,8 +77,9 @@ export const products: Product[] = [
     released: "October 2026",
     icon: "/products/hisaab/icon.png",
     video: {
-      youtubeId: "4p6LUxyYVe8",
-      title: "Hisaab demo — billing, inventory and accounting",
+      youtubeId: "zZCYSYifzLE",
+      title: "Hisaab Demo – Billing, Inventory & Accounting Software",
+      uploadDate: "2026-10-12",
     },
     features: [
       {
