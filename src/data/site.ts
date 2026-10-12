@@ -14,7 +14,7 @@ export const site = {
   /** Where we take work. Used in the copy and in the Organization schema. */
   areaServed: "Pakistan",
   /** Display form first; the tel: form is derived in Contact. */
-  phones: ["+92 333 6205055", "+92 305 8111211"],
+  phones: ["+92 333 6205055", "+92 315 6908925"],
   /** The year the agency started, for the Organization schema. */
   founded: "2026",
 };
