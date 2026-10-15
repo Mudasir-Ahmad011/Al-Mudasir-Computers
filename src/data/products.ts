@@ -150,7 +150,7 @@ export const products: Product[] = [
     license: "Free",
     released: "September 2026",
     icon: "/products/idmpro/icon.png",
-    downloadUrl: "https://github.com/Mudasir-Ahmad011/Idmpro-Setup/releases/tag/v1.0.0",
+    downloadUrl: "https://github.com/Mudasir-Ahmad011/Idmpro-Setup/releases/",
     downloadLabel: "Download",
     extensions: [
       {
