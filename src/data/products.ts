@@ -144,7 +144,7 @@ export const products: Product[] = [
     category: "Download Manager",
     year: "2026",
     stack: ["Python", "Qt", "SQLite", "Browser extension", "Inno Setup"],
-    version: "1.0.0",
+    version: "1.0.1",
     platform: "Windows 10 / 11 (64-bit)",
     size: "139 MB",
     license: "Free",
@@ -156,12 +156,12 @@ export const products: Product[] = [
       {
         store: "Chrome Web Store",
         url: "https://chromewebstore.google.com/detail/idm-pro/dnfoelinnbebkekgohdgmbjemncfhfac",
-        version: "1.0.1",
+        version: "1.0.3",
       },
       {
         store: "Firefox Add-ons",
         url: "https://addons.mozilla.org/en-US/firefox/addon/idm-pro/",
-        version: "1.0.2",
+        version: "1.0.3",
       },
     ],
     features: [
